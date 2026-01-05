@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Para Alayn 🌹</title>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&family=Cormorant+Garamond:wght@300;400;600&family=Raleway:wght@300;400&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Raleway', sans-serif;
+            background: #0f0c29;
+            background: linear-gradient(to bottom, #0f0c29, #302b63, #24243e);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        .stars {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+        }
+
+        .star {
+            position: absolute;
+            width: 2px;
+            height: 2px;
+            background: white;
+            border-radius: 50%;
+            animation: twinkle 3s infinite;
+        }
+
+        @keyframes twinkle {
+            0%, 100% { opacity: 0.3; }
+            50% { opacity: 1; }
+        }
+
+        .petals {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .petal {
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background: radial-gradient(ellipse at center, #ff6b9d 0%, #c23866 100%);
+            border-radius: 50% 50% 50% 0;
+            opacity: 0;
+            animation: fall 12s infinite;
+        }
+
+        @keyframes fall {
+            0% {
+                transform: translateY(-100px) rotate(0deg);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(100vh) rotate(720deg);
+                opacity: 0;
+            }
+        }
+
+        .container {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border: 2px solid rgba(255, 255, 255, 0.1);
+            border-radius: 40px;
+            padding: 80px 50px;
+            max-width: 800px;
+            width: 90%;
+            box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+            text-align: center;
+            position: relative;
+            z-index: 2;
+            animation: glow 3s ease-in-out infinite;
+        }
+
+        @keyframes glow {
+            0%, 100% {
+                box-shadow: 0 8px 32px 0 rgba(255, 107, 157, 0.3);
+            }
+            50% {
+                box-shadow: 0 8px 60px 0 rgba(255, 107, 157, 0.6);
+            }
+        }
+
+        .header {
+            font-family: 'Dancing Script', cursive;
+            font-size: 42px;
+            color: #fff;
+            margin-bottom: 40px;
+            text-shadow: 0 0 20px rgba(255, 107, 157, 0.8);
+            animation: fadeInDown 1.5s ease-out;
+        }
+
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .rose-container {
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 40px 0;
+            animation: roseBloom 2s ease-out;
+        }
+
+        @keyframes roseBloom {
+            0% {
+                transform: scale(0) rotate(-180deg);
+                opacity: 0;
+            }
+            60% {
+                transform: scale(1.1) rotate(10deg);
+            }
+            100% {
+                transform: scale(1) rotate(0deg);
+                opacity: 1;
+            }
+        }
+
+        .rose-main {
+            font-size: 120px;
+            filter: drop-shadow(0 0 30px rgba(255, 107, 157, 0.8));
+            animation: float 4s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0px);
+            }
+            50% {
+                transform: translateY(-20px);
+            }
+        }
+
+        .rose-side {
+            font-size: 60px;
+            position: absolute;
+            opacity: 0.7;
+            animation: sideFloat 5s ease-in-out infinite;
+        }
+
+        .rose-left {
+            left: -30px;
+            animation-delay: 0.5s;
+        }
+
+        .rose-right {
+            right: -30px;
+            animation-delay: 1s;
+        }
+
+        @keyframes sideFloat {
+            0%, 100% {
+                transform: translateY(0px) rotate(0deg);
+            }
+            50% {
+                transform: translateY(-15px) rotate(5deg);
+            }
+        }
+
+        .message-box {
+            background: rgba(255, 255, 255, 0.08);
+            border-radius: 20px;
+            padding: 30px;
+            margin: 30px 0;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            opacity: 0;
+            animation: slideUp 1s ease-out 1s forwards;
+        }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(40px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .message {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 24px;
+            color: #ffc8dd;
+            line-height: 1.8;
+        }
+
+        .rotating-text {
+            font-family: 'Raleway', sans-serif;
+            font-size: 20px;
+            color: #ffafcc;
+            margin: 25px 0;
+            min-height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 300;
+            letter-spacing: 1px;
+        }
+
+        .name-section {
+            margin: 50px 0 30px 0;
+            opacity: 0;
+            animation: slideUp 1s ease-out 1.5s forwards;
+        }
+
+        .name-label {
+            font-family: 'Raleway', sans-serif;
+            font-size: 18px;
+            color: #cdb4db;
+            letter-spacing: 3px;
+            margin-bottom: 15px;
+        }
+
+        .name {
+            font-family: 'Dancing Script', cursive;
+            font-size: 80px;
+            font-weight: 700;
+            background: linear-gradient(45deg, #ff6b9d, #fec5e5, #ff85a2);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-shadow: 0 0 40px rgba(255, 107, 157, 0.5);
+            animation: nameGlow 2s ease-in-out infinite;
+        }
+
+        @keyframes nameGlow {
+            0%, 100% {
+                filter: brightness(1);
+            }
+            50% {
+                filter: brightness(1.3);
+            }
+        }
+
+        .final-quote {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 22px;
+            color: #e0aaff;
+            font-style: italic;
+            line-height: 1.8;
+            margin-top: 40px;
+            padding: 35px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 20px;
+            border-left: 4px solid #ff6b9d;
+            opacity: 0;
+            animation: slideUp 1s ease-out 2s forwards;
+        }
+
+        .decorative-line {
+            width: 200px;
+            height: 2px;
+            background: linear-gradient(to right, transparent, #ff6b9d, transparent);
+            margin: 30px auto;
+            animation: lineGrow 2s ease-out;
+        }
+
+        @keyframes lineGrow {
+            from {
+                width: 0;
+            }
+            to {
+                width: 200px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="stars" id="stars"></div>
+    <div class="petals" id="petals"></div>
+    
+    <div class="container">
+        <div class="header">
+            Para la niña que me tiene enamorado
+        </div>
+        
+        <div class="rose-container">
+            <div class="rose-side rose-left">🌹</div>
+            <div class="rose-main">🌹</div>
+            <div class="rose-side rose-right">🌹</div>
+        </div>
+
+        <div class="decorative-line"></div>
+        
+        <div class="message-box">
+            <div class="message">
+                En un mundo lleno de personas, mis ojos solo te buscan a ti
+            </div>
+        </div>
+
+        <div class="rotating-text" id="rotatingText"></div>
+
+        <div class="name-section">
+            <div class="name-label">✧ ✦ ✧</div>
+            <div class="name">Alayn</div>
+            <div class="name-label">✧ ✦ ✧</div>
+        </div>
+
+        <div class="decorative-line"></div>
+
+        <div class="final-quote">
+            "Contigo descubrí que el amor no se busca, simplemente llega cuando menos lo esperas. Eres la melodía que hace bailar mi corazón, la luz que ilumina cada amanecer y la razón por la que creo en los cuentos de hadas. En tus ojos encontré mi hogar, y en tu sonrisa, mi felicidad eterna."
+        </div>
+    </div>
+
+    <script>
+        const messages = [
+            "Tu risa es mi canción favorita 🎵",
+            "Eres el sueño que nunca quiero despertar 💭",
+            "Cada momento contigo es un regalo 🎁",
+            "Tu mirada ilumina mi universo ✨",
+            "Eres mi verso favorito 📖",
+            "Contigo el tiempo se detiene ⏰",
+            "Tu presencia es mi paz 🕊️",
+            "Eres mi estrella en la oscuridad 🌟"
+        ];
+
+        let index = 0;
+        const textElement = document.getElementById('rotatingText');
+
+        function rotateMessage() {
+            textElement.style.opacity = '0';
+            textElement.style.transform = 'translateY(20px)';
+            
+            setTimeout(() => {
+                textElement.textContent = messages[index];
+                textElement.style.transition = 'all 0.8s ease';
+                textElement.style.opacity = '1';
+                textElement.style.transform = 'translateY(0)';
+                index = (index + 1) % messages.length;
+            }, 400);
+        }
+
+        setTimeout(() => {
+            rotateMessage();
+            setInterval(rotateMessage, 4000);
+        }, 2500);
+
+        for (let i = 0; i < 100; i++) {
+            const star = document.createElement('div');
+            star.className = 'star';
+            star.style.left = Math.random() * 100 + '%';
+            star.style.top = Math.random() * 100 + '%';
+            star.style.animationDelay = Math.random() * 3 + 's';
+            document.getElementById('stars').appendChild(star);
+        }
+
+        function createPetal() {
+            const petal = document.createElement('div');
+            petal.className = 'petal';
+            petal.style.left = Math.random() * 100 + '%';
+            petal.style.animationDuration = (Math.random() * 6 + 8) + 's';
+            petal.style.animationDelay = Math.random() * 4 + 's';
+            document.getElementById('petals').appendChild(petal);
+
+            setTimeout(() => {
+                petal.remove();
+            }, 15000);
+        }
+
+        for (let i = 0; i < 15; i++) {
+            setTimeout(() => createPetal(), i * 500);
+        }
+
+        setInterval(createPetal, 2000);
+    </script>
+</body>
+</html>
